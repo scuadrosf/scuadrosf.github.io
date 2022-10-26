@@ -59,12 +59,15 @@ a:hover{
     font-size: 5vw;
     line-height: 1;
     font-weight: 900; */    
+    position: relative;
+    display: block;
     background: linear-gradient(-45deg, #33b12a,
     #DFB79E, #2B0413, #ffffff, #DFB79E, #ff402f);
     background-size: 300%;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
     font-size: 5vw;
+    font-style: italic;
     letter-spacing: -5px;
     text-transform: uppercase;
     -webkit-background-clip: text;
@@ -126,7 +129,7 @@ a:hover{
     font-family: "Dancing Script", cursive;
     letter-spacing: 1px;
     color: #2ac764;
-    font-size: 26px;
+    font-size: 30px;
     line-height: 1;
     font-weight: 700;
 }
@@ -192,9 +195,13 @@ a:hover{
     font-family: "Dancing Script", cursive;
     letter-spacing: 1px;
     color: #2ac764;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 400;
+    
   }
+.about-section .line{
+  border-top: 5px solid #DFB79E;
+}
 .about-section img {
     width: 248px;
     height: 230px;
