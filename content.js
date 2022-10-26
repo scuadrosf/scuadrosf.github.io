@@ -1,5 +1,3 @@
-
-
 /* Please ❤ this if you like it! */
 
 
@@ -53,34 +51,34 @@
 	});
 
 	
-	//Travel portfolio page
+	//Studies portfolio page
 	
-	$(".travel").on('click', function () {
-		$("body").addClass("travel-on");
+	$(".Studies").on('click', function () {
+		$("body").addClass("Studies-on");
 	});
-	$(".travel-close").on('click', function () {
-		$("body").removeClass("travel-on");
-	});
-
-	
-	//Wildlife portfolio page
-	
-	$(".wildlife").on('click', function () {
-		$("body").addClass("wildlife-on");
-	});
-	$(".wildlife-close").on('click', function () {
-		$("body").removeClass("wildlife-on");
+	$(".Studies-close").on('click', function () {
+		$("body").removeClass("Studies-on");
 	});
 
 	
-	//Nature portfolio page
+	//Skills portfolio page
 	
-	$(".nature").on('click', function () {
-		$("body").addClass("nature-on");
+	$(".Skills").on('click', function () {
+		$("body").addClass("Skills-on");
 	});
-	$(".nature-close").on('click', function () {
-		$("body").removeClass("nature-on");
+	$(".Skills-close").on('click', function () {
+		$("body").removeClass("Skills-on");
 	});
 
 	
-})(jQuery); 
+	//Experience portfolio page
+	
+	$(".Experience").on('click', function () {
+		$("body").addClass("Experience-on");
+	});
+	$(".Experience-close").on('click', function () {
+		$("body").removeClass("Experience-on");
+	});
+
+	
+})(jQuery);
