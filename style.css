@@ -392,7 +392,24 @@ body.Experience-on .hero-section{
     font-size: 20px;
     line-height: 1.3;
     font-weight: 700;
-    color: blueviolet;
+    color: white;
+}
+.Experience-section .date{
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: black;
+}
+.Experience-section .place{
+  font-size:10px;
+  font-weight: 500;
+  line-height: 1.3;
+  font-weight: 500;
+  color:black;
+}
+.Experience-section .box{
+  box-sizing: border-box;
+  border-color: #2ac764;
 }
 
 .Studies-section,
