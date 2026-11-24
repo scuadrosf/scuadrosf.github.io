@@ -184,55 +184,71 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
       <div class="game-head">
         <div>
           <h2>¿No puedes esperar?</h2>
-          <p>Supera las 5 pruebas sobre el cumpleañero y lo abres ya.</p>
+          <p>Supera las 7 pruebas sobre el cumpleañero y lo abres ya.</p>
         </div>
         <div class="progress" id="progress"></div>
       </div>
-
-      <!-- Nivel 1 -->
-      <div class="level" data-level="0">
+      <div class="level">
         <span class="tag">Prueba 1 · Astros</span>
         <h3>Un cumple fuera de calendario</h3>
         <p class="riddle">Lo celebro unos días antes, pero en realidad llegué al mundo un <i>24 de diciembre</i>, en plena Nochebuena. Ese día el Sol estaba en el décimo signo del zodiaco: uno de tierra, con cuernos de cabra y cola de pez.<br>¿Cuál es mi signo?</p>
         <form class="form" data-answer="capricornio|capricorn|capricorno">
-          <input autocomplete="off" placeholder="Tu respuesta…" aria-label="Respuesta prueba 1">
+          <input autocomplete="off" placeholder="Tu respuesta…" aria-label="Respuesta: signo">
           <button class="btn">Comprobar</button>
         </form>
         <div class="msg"></div>
         <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Empieza por «Capri»… y no es la isla.</span></div>
       </div>
-
-      <!-- Nivel 2 -->
-      <div class="level" data-level="1">
+      <div class="level">
         <span class="tag">Prueba 2 · Historia</span>
         <h3>Una universidad con corona</h3>
         <p class="riddle">Me hice ingeniero de software en una universidad que lleva el nombre de un rey. Pero no de cualquier rey: el que reinó en España de 1975 a 2014.<br>¿Qué <i>nombre</i> lleva ese rey?</p>
         <form class="form" data-answer="juan carlos|juan carlos i|rey juan carlos|juancarlos|urjc">
-          <input autocomplete="off" placeholder="Nombre del rey…" aria-label="Respuesta prueba 2">
+          <input autocomplete="off" placeholder="Nombre del rey…" aria-label="Respuesta: rey">
           <button class="btn">Comprobar</button>
         </form>
         <div class="msg"></div>
         <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Su hijo es Felipe VI.</span></div>
       </div>
 
-      <!-- Nivel 3 -->
-      <div class="level" data-level="2">
-        <span class="tag">Prueba 3 · Criptografía</span>
+      <div class="level">
+        <span class="tag">Prueba 3 · Color</span>
+        <h3>El color de la nieve</h3>
+        <p class="riddle">Mi color favorito no aparece en el arcoíris, pero los lleva todos dentro: si juntas toda la luz, sale él. Es el de la nieve que está cayendo en esta página.<br>¿Cuál es?</p>
+        <form class="form" data-answer="blanco|white|el blanco">
+          <input autocomplete="off" placeholder="Un color…" aria-label="Respuesta: color favorito">
+          <button class="btn">Comprobar</button>
+        </form>
+        <div class="msg"></div>
+        <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Es lo contrario del negro.</span></div>
+      </div>
+      <div class="level">
+        <span class="tag">Prueba 4 · Criptografía</span>
         <h3>Antes del código, la masa</h3>
         <p class="riddle">Antes de programar, me tocó estirar masa y hornear pizzas. El sitio está escondido con un <i>cifrado César</i>. La clave: el día en que nací de verdad (cada letra se desplazó 24 posiciones hacia delante).</p>
         <div class="cipher">RYEJGYRCJJY</div>
         <div class="wheel" id="wheel"></div>
         <form class="form" data-answer="tagliatella|la tagliatella">
-          <input autocomplete="off" placeholder="Mensaje descifrado…" aria-label="Respuesta prueba 3">
+          <input autocomplete="off" placeholder="Mensaje descifrado…" aria-label="Respuesta: cifrado">
           <button class="btn">Descifrar</button>
         </form>
         <div class="msg"></div>
         <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Retrocede 24 letras (o avanza 2): R → T, Y → A…</span></div>
       </div>
 
-      <!-- Nivel 4 -->
-      <div class="level" data-level="3">
-        <span class="tag">Prueba 4 · Lógica</span>
+      <div class="level">
+        <span class="tag">Prueba 5 · Trabajo</span>
+        <h3>De la pizza al renting</h3>
+        <p class="riddle">Hoy no hago pizzas: trabajo para un cliente que es un gigante del renting y el leasing de coches. Nació cuando <i>ALD Automotive</i> y <i>LeasePlan</i> se fusionaron.<br>¿Cómo se llama?</p>
+        <form class="form" data-answer="ayvens|ayvens ald|ald ayvens">
+          <input autocomplete="off" placeholder="Nombre de la empresa…" aria-label="Respuesta: cliente">
+          <button class="btn">Comprobar</button>
+        </form>
+        <div class="msg"></div>
+        <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Empieza por A, tiene 6 letras y suena a «ay, vente».</span></div>
+      </div>
+      <div class="level">
+        <span class="tag">Prueba 6 · Lógica</span>
         <h3>Sopla las velas</h3>
         <p class="riddle">Apaga las 7 velas. El truco: al soplar una vela, también <i>cambian</i> las de su lado (las encendidas se apagan y las apagadas se encienden).</p>
         <div class="cake" id="cake"></div>
@@ -243,10 +259,8 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
         <div class="msg"></div>
         <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Se puede en 3 soplidos. Empieza por un extremo… y piensa en grupos de tres.</span></div>
       </div>
-
-      <!-- Nivel 5 -->
-      <div class="level" data-level="4">
-        <span class="tag">Prueba 5 · Binario</span>
+      <div class="level">
+        <span class="tag">Prueba 7 · Binario</span>
         <h3>El candado del ingeniero</h3>
         <p class="riddle">Un ingeniero no cuenta velas, cuenta bits. Traduce estos dos números a decimal y tendrás el código del candado: el <i>día</i> y el <i>mes</i> en que nací de verdad.</p>
         <div class="bits" id="bits"></div>
@@ -423,7 +437,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
     levels.forEach((l, j) => l.classList.toggle("active", j === i));
     [...prog.children].forEach((d, j) => { d.classList.toggle("done", j < i); d.classList.toggle("now", j === i); });
   }
-  const praise = ["¡Correcto! 🔥", "¡Bien visto! 👑", "¡Descifrado! 🕵️", "¡Ni una vela! 🎂"];
+  const praise = ["¡Correcto! 🔥", "¡Bien visto! 👑", "¡Blanco y en botella! 🤍", "¡Descifrado! 🕵️", "¡Exacto! 🚗", "¡Ni una vela! 🎂"];
   function pass(i){
     const msg = levels[i].querySelector(".msg");
     msg.className = "msg ok"; msg.textContent = praise[i] || "¡Correcto!";
@@ -441,7 +455,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
       e.preventDefault();
       const inp = form.querySelector("input");
       const ok = form.dataset.answer.split("|").some(a => norm(a) === norm(inp.value));
-      const lvl = +form.closest(".level").dataset.level;
+      const lvl = levels.indexOf(form.closest(".level"));
       if (ok) pass(lvl);
       else {
         const msg = form.parentElement.querySelector(".msg");
@@ -459,6 +473,8 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
   // Velas (Lights Out en línea, 7 velas, resoluble en 3)
   const N = 7; let lit, moves;
   const cake = $("#cake");
+  const VELAS = levels.indexOf(cake.closest(".level"));
+  const BIN = levels.indexOf($("#pins").closest(".level"));
   for (let i=0;i<N;i++){
     const b = document.createElement("button");
     b.type = "button"; b.className = "candle"; b.setAttribute("aria-label", `Vela ${i+1}`);
@@ -467,12 +483,12 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
     cake.appendChild(b);
   }
   function paintCake(){ [...cake.children].forEach((c, i) => c.classList.toggle("off", !lit[i])); $("#moves").textContent = `Soplidos: ${moves}`; }
-  function resetCake(){ lit = Array(N).fill(true); moves = 0; paintCake(); levels[3].querySelector(".msg").textContent = ""; }
+  function resetCake(){ lit = Array(N).fill(true); moves = 0; paintCake(); levels[VELAS].querySelector(".msg").textContent = ""; }
   function blow(i){
-    if (cur !== 3) return;
+    if (cur !== VELAS) return;
     [i-1, i, i+1].forEach(j => { if (j >= 0 && j < N) lit[j] = !lit[j]; });
     moves++; paintCake();
-    if (lit.every(x => !x)) pass(3);
+    if (lit.every(x => !x)) pass(VELAS);
   }
   $("#resetCake").addEventListener("click", resetCake);
   resetCake();
@@ -493,7 +509,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
   function checkPins(){
     const code = pins.map(p => p.value).join("");
     if (code.length < 4) return;
-    const msg = levels[4].querySelector(".msg");
+    const msg = levels[BIN].querySelector(".msg");
     if (code === "2412"){ msg.className = "msg ok"; msg.textContent = "Clic. 🔓"; setTimeout(() => unlock(true), 500); }
     else {
       msg.className = "msg"; msg.textContent = "El candado no cede…";
