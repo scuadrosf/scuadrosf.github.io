@@ -128,7 +128,10 @@ body.unlocked #reveal{display:block;animation:rise .9s ease}
 .date-hero .month{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(1.4rem,5vw,2.2rem);color:var(--ink)}
 .map-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:30px 0 10px}
 .map-cta .btn{font-size:1.05rem;padding:16px 26px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:44px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:44px}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.house{display:flex;justify-content:center;margin-top:18px}
+.house span{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:99px;border:1px solid rgba(255,196,107,.45);background:rgba(255,196,107,.1);color:var(--gold);font-weight:500}
 .card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);padding:22px;transition:transform .3s}
 .card:hover{transform:translateY(-4px) rotate(-.4deg)}
 .card .ico{font-size:2rem}
@@ -271,15 +274,18 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
     </div>
 
     <div class="map-cta">
-      <a class="btn" href="https://maps.app.goo.gl/K6e2pPKDNEquDxmG9?g_st=ic" target="_blank" rel="noopener">📍 Abrir ubicación</a>
+      <a class="btn" href="https://maps.app.goo.gl/K6e2pPKDNEquDxmG9?g_st=ic" target="_blank" rel="noopener">📍 Abrir ubicación de la casa</a>
       <button class="btn ghost" type="button" id="ics">🗓️ Añadir al calendario</button>
     </div>
+
+    <div class="house"><span>🏡 Es en una casa</span></div>
 
     <p class="lead" style="margin-top:22px">Celebramos mi cumpleaños (sí, nací en Nochebuena, pero aquí se celebra antes) y, de paso, cerramos el año todos juntos. Una última reunión para brindar por lo vivido.</p>
 
     <div class="cards">
       <div class="card"><div class="ico">🧥</div><h3>Ven abrigado</h3><p>Diciembre no perdona. Bufanda, chaqueta y lo que haga falta: no dudes en venir bien abrigado.</p></div>
       <div class="card"><div class="ico">🍾</div><h3>Tu alcohol favorito</h3><p>Trae esa botella que te representa. Aquí se comparte todo, especialmente los brindis.</p></div>
+      <div class="card"><div class="ico">🛌</div><h3>No olvides el pijama</h3><p>Es en una casa y la noche va para largo. Mete el pijama en la mochila, que luego no hay excusas.</p></div>
       <div class="card"><div class="ico">🎉</div><h3>Ganas de pasarlo bien</h3><p>Lo único obligatorio. Ven con energía, buen rollo y ganas de cerrar el año por todo lo alto.</p></div>
     </div>
 
@@ -512,7 +518,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
       `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${d2}`,
       "SUMMARY:🎉 Cumple de Sergio + cierre de año",
       "LOCATION:https://maps.app.goo.gl/K6e2pPKDNEquDxmG9",
-      "DESCRIPTION:Ven abrigado\\, trae tu alcohol favorito y ganas de pasarlo bien. Bizum opcional 15-20-25 €.",
+      "DESCRIPTION:Es en una casa. Ven abrigado\\, trae tu alcohol favorito\\, el pijama y ganas de pasarlo bien. Bizum opcional 15-20-25 €.",
       "END:VEVENT","END:VCALENDAR"
     ].join("\r\n");
     const a = document.createElement("a");
