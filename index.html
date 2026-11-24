@@ -316,10 +316,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
   const pad = n => String(n).padStart(2, "0");
   const madrid = (y, mo, d, h = 0) => new Date(`${y}-${pad(mo)}-${pad(d)}T${pad(h)}:00:00+01:00`);
 
-  // Próximo 18/11 15:00. Si ya pasó la fiesta (después del 20/11), cuenta hacia el año siguiente.
-  const now0 = new Date();
-  let year = now0.getFullYear();
-  if (now0 >= madrid(year, PARTY.month, PARTY.day + 1, 6)) year++;
+  const year = 2026;
   const target = madrid(year, UNLOCK.month, UNLOCK.day, UNLOCK.hour);
   const partyDate = madrid(year, PARTY.month, PARTY.day, 12);
 
