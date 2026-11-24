@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Se abre el 18 · Cumple de Sergio</title>
-<meta name="description" content="Algo se desbloquea el 18 de noviembre a las 15:00. ¿Te atreves a abrirlo antes?">
-<meta property="og:title" content="🔒 Se abre el 18 de noviembre a las 15:00">
+<meta name="description" content="Algo se desbloquea el 18 de diciembre a las 15:00. ¿Te atreves a abrirlo antes?">
+<meta property="og:title" content="🔒 Se abre el 18 de diciembre a las 15:00">
 <meta property="og:description" content="Cumple de Sergio + cierre de año. ¿Eres capaz de abrirlo antes de tiempo?">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0b0d1f">
@@ -175,7 +175,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
       <div class="cell"><span class="num" id="m">--</span><span class="lbl">Min</span></div>
       <div class="cell"><span class="num" id="s">--</span><span class="lbl">Seg</span></div>
     </div>
-    <p class="target">Se desbloquea el <b id="targetTxt">18 de noviembre a las 15:00</b></p>
+    <p class="target">Se desbloquea el <b id="targetTxt">18 de diciembre a las 15:00</b></p>
 
     <div class="game">
       <div class="game-head">
@@ -190,7 +190,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
       <div class="level" data-level="0">
         <span class="tag">Prueba 1 · Astros</span>
         <h3>Un cumple fuera de calendario</h3>
-        <p class="riddle">Lo celebro en noviembre, pero en realidad llegué al mundo un <i>24 de diciembre</i>, en plena Nochebuena. Ese día el Sol estaba en el décimo signo del zodiaco: uno de tierra, con cuernos de cabra y cola de pez.<br>¿Cuál es mi signo?</p>
+        <p class="riddle">Lo celebro unos días antes, pero en realidad llegué al mundo un <i>24 de diciembre</i>, en plena Nochebuena. Ese día el Sol estaba en el décimo signo del zodiaco: uno de tierra, con cuernos de cabra y cola de pez.<br>¿Cuál es mi signo?</p>
         <form class="form" data-answer="capricornio|capricorn|capricorno">
           <input autocomplete="off" placeholder="Tu respuesta…" aria-label="Respuesta prueba 1">
           <button class="btn">Comprobar</button>
@@ -267,7 +267,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
     <div class="date-hero">
       <div class="month" id="weekday">El jueves</div>
       <div class="day">19</div>
-      <div class="month">de noviembre nos vemos en…</div>
+      <div class="month">de diciembre nos vemos en…</div>
     </div>
 
     <div class="map-cta">
@@ -278,7 +278,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
     <p class="lead" style="margin-top:22px">Celebramos mi cumpleaños (sí, nací en Nochebuena, pero aquí se celebra antes) y, de paso, cerramos el año todos juntos. Una última reunión para brindar por lo vivido.</p>
 
     <div class="cards">
-      <div class="card"><div class="ico">🧥</div><h3>Ven abrigado</h3><p>Noviembre no perdona. Bufanda, chaqueta y lo que haga falta: no dudes en venir bien abrigado.</p></div>
+      <div class="card"><div class="ico">🧥</div><h3>Ven abrigado</h3><p>Diciembre no perdona. Bufanda, chaqueta y lo que haga falta: no dudes en venir bien abrigado.</p></div>
       <div class="card"><div class="ico">🍾</div><h3>Tu alcohol favorito</h3><p>Trae esa botella que te representa. Aquí se comparte todo, especialmente los brindis.</p></div>
       <div class="card"><div class="ico">🎉</div><h3>Ganas de pasarlo bien</h3><p>Lo único obligatorio. Ven con energía, buen rollo y ganas de cerrar el año por todo lo alto.</p></div>
     </div>
@@ -298,7 +298,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
   </section>
 
   <footer>
-    <span id="foot">Hecho con 🕯️ para el 18 de noviembre</span>
+    <span id="foot">Hecho con 🕯️ para el 18 de diciembre</span>
     · <button type="button" id="relock">Volver a bloquear</button>
   </footer>
 </main>
@@ -308,9 +308,9 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
   "use strict";
 
   /* ================= CONFIG ================= */
-  // Hora de España en noviembre = CET (UTC+01:00)
-  const UNLOCK = { month: 11, day: 18, hour: 15 };
-  const PARTY  = { month: 11, day: 19 };
+  // Hora de España en diciembre = CET (UTC+01:00)
+  const UNLOCK = { month: 12, day: 18, hour: 15 };
+  const PARTY  = { month: 12, day: 19 };
   const KEY = "cumple18-unlocked";
 
   const pad = n => String(n).padStart(2, "0");
@@ -329,7 +329,7 @@ footer button{background:none;border:none;color:var(--dim);text-decoration:under
   };
   if (new URLSearchParams(location.search).has("reset")) store.del(KEY);
 
-  $("#targetTxt").textContent = `18 de noviembre de ${year} a las 15:00`;
+  $("#targetTxt").textContent = `18 de diciembre de ${year} a las 15:00`;
   const wd = new Intl.DateTimeFormat("es-ES", { weekday: "long", timeZone: "Europe/Madrid" }).format(partyDate);
   $("#weekday").textContent = `El ${wd}`;
 
