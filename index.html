@@ -1,175 +1,537 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Sergio Cuadros Flores</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Se abre el 18 · Cumple de Sergio</title>
+<meta name="description" content="Algo se desbloquea el 18 de noviembre a las 15:00. ¿Te atreves a abrirlo antes?">
+<meta property="og:title" content="🔒 Se abre el 18 de noviembre a las 15:00">
+<meta property="og:description" content="Cumple de Sergio + cierre de año. ¿Eres capaz de abrirlo antes de tiempo?">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0d1f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕯️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d1f; --bg2:#151236; --ink:#f4efe6; --muted:#a9a6c4; --dim:#6d6a8c;
+  --gold:#ffc46b; --flame:#ff8a3d; --rose:#ff5f8f; --mint:#6ff0c4;
+  --glass:rgba(255,255,255,.06); --line:rgba(255,255,255,.12);
+  --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+html{background:var(--bg)}
+body{
+  min-height:100vh;background:transparent;
+  color:var(--ink); font-family:"Space Grotesk",system-ui,sans-serif;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(1200px 800px at 80% -10%, #3a1f5c 0%, transparent 60%),
+             radial-gradient(900px 700px at -10% 110%, #123a55 0%, transparent 60%),
+             linear-gradient(180deg,var(--bg),var(--bg2))}
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+#confetti{position:fixed;inset:0;z-index:50;pointer-events:none}
+main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:48px 16px 80px}
+.eyebrow{font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);text-align:center}
+h1,h2,h3{font-family:"Fraunces",serif;font-weight:600;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,8vw,5.2rem);line-height:.95;text-align:center;margin:14px 0 10px}
+h1 em{font-style:italic;font-weight:400;background:linear-gradient(90deg,var(--gold),var(--rose));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);text-align:center;max-width:520px;margin:0 auto;font-size:1.05rem;line-height:1.55}
 
+/* ---------- Candado ---------- */
+.lock{width:84px;height:100px;margin:0 auto 18px;position:relative;filter:drop-shadow(0 0 24px rgba(255,196,107,.35))}
+.lock .shackle{position:absolute;left:17px;top:0;width:50px;height:52px;border:8px solid var(--gold);border-bottom:none;border-radius:30px 30px 0 0;transition:transform .8s cubic-bezier(.6,-0.4,.3,1.6);transform-origin:right bottom}
+.lock .body{position:absolute;bottom:0;left:0;width:84px;height:58px;border-radius:16px;background:linear-gradient(160deg,#ffd38f,#e08b2e)}
+.lock .body::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:20px;margin:-10px 0 0 -6px;border-radius:6px;background:#3b2210}
+.lock.open .shackle{transform:translateY(-14px) rotate(28deg)}
+
+/* ---------- Countdown ---------- */
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:38px auto 10px;max-width:640px}
+.cell{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);padding:18px 6px 14px;text-align:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.cell::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.35)}
+.num{font-family:"Fraunces",serif;font-size:clamp(2rem,9vw,4rem);font-weight:500;line-height:1;font-variant-numeric:tabular-nums;display:block}
+.num.tick{animation:tick .45s ease}
+@keyframes tick{0%{transform:translateY(-30%);opacity:0}100%{transform:none;opacity:1}}
+.lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-top:8px;display:block}
+.target{text-align:center;color:var(--muted);font-size:.92rem;margin-top:12px}
+.target b{color:var(--ink);font-weight:500}
+
+/* ---------- Juego ---------- */
+.game{margin-top:56px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:28px;padding:28px 20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.game-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.game-head h2{font-size:clamp(1.5rem,5vw,2.1rem)}
+.game-head p{color:var(--muted);font-size:.95rem;margin-top:4px}
+.progress{display:flex;gap:8px}
+.dot{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:.8rem;color:var(--dim);transition:.3s}
+.dot.done{background:var(--gold);color:#2a1606;border-color:var(--gold);box-shadow:0 0 14px rgba(255,196,107,.6)}
+.dot.now{border-color:var(--gold);color:var(--gold)}
+.level{display:none;margin-top:26px;animation:rise .5s ease}
+.level.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.tag{display:inline-block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);border:1px solid rgba(111,240,196,.35);padding:4px 10px;border-radius:99px}
+.level h3{font-size:clamp(1.25rem,4vw,1.6rem);margin:12px 0 8px}
+.riddle{color:#d9d5ee;line-height:1.65;font-size:1.02rem}
+.riddle i{color:var(--gold);font-style:normal}
+.cipher{font-family:"Fraunces",serif;font-size:clamp(1.4rem,6vw,2.3rem);letter-spacing:.18em;text-align:center;margin:20px 0 6px;color:var(--gold);word-break:break-all}
+.wheel{display:flex;justify-content:center;gap:4px;flex-wrap:wrap;margin:6px 0 2px;font-size:.78rem;color:var(--dim);font-variant-numeric:tabular-nums}
+.wheel span{width:22px;text-align:center}
+.form{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.form input{flex:1 1 220px;min-width:0;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--ink);font:inherit;font-size:1rem;outline:none;transition:.2s}
+.form input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(255,196,107,.15)}
+.form input.shake{animation:shake .4s;border-color:var(--rose)}
+@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+.btn{appearance:none;border:none;cursor:pointer;font:inherit;font-weight:700;padding:14px 22px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--flame));color:#2a1606;transition:transform .15s, box-shadow .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,138,61,.35)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hint{margin-top:12px;font-size:.88rem;color:var(--dim)}
+.hint button{background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit}
+.hint .txt{display:none;color:var(--muted)}
+.hint.show .txt{display:inline}
+.hint.show button{display:none}
+.msg{min-height:1.4em;margin-top:10px;font-size:.92rem;color:var(--rose)}
+.msg.ok{color:var(--mint)}
+
+/* velas */
+.cake{display:flex;justify-content:center;gap:clamp(6px,2.4vw,16px);margin:28px 0 8px;padding-bottom:18px;border-bottom:10px solid #3a2347;border-radius:0 0 12px 12px}
+.candle{width:clamp(26px,8vw,40px);height:90px;position:relative;cursor:pointer;background:none;border:none;-webkit-tap-highlight-color:transparent}
+.candle .wax{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:62%;height:58px;border-radius:5px 5px 2px 2px;background:repeating-linear-gradient(135deg,#ffe2ea 0 7px,var(--rose) 7px 13px)}
+.candle .wick{position:absolute;bottom:58px;left:50%;width:2px;height:8px;margin-left:-1px;background:#2b1b10}
+.candle .fl{position:absolute;bottom:64px;left:50%;width:16px;height:24px;margin-left:-8px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff6c9 0 20%,var(--gold) 45%,var(--flame) 75%,transparent 76%);filter:drop-shadow(0 0 10px rgba(255,170,60,.9));transform-origin:50% 90%;animation:flick 1.4s ease-in-out infinite alternate;transition:opacity .25s, transform .25s}
+.candle:nth-child(2n) .fl{animation-delay:-.6s}
+.candle.off .fl{opacity:0;transform:scale(.2)}
+.candle.off .wick::after{content:"";position:absolute;bottom:6px;left:-4px;width:10px;height:22px;border-radius:50%;background:rgba(220,220,240,.25);filter:blur(3px);animation:smoke 1.2s ease-out forwards}
+@keyframes flick{0%{transform:rotate(-3deg) scaleY(1)}100%{transform:rotate(3deg) scaleY(1.08)}}
+@keyframes smoke{from{opacity:.8;transform:translateY(0)}to{opacity:0;transform:translateY(-26px) scaleX(1.6)}}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:10px}
+.moves{color:var(--dim);font-size:.9rem}
+
+/* binario */
+.bits{display:flex;justify-content:center;gap:clamp(4px,1.6vw,10px);flex-wrap:wrap;margin:22px 0 4px}
+.bit{width:clamp(28px,7.4vw,44px);height:clamp(28px,7.4vw,44px);border-radius:10px;display:grid;place-items:center;font-family:"Fraunces",serif;font-size:1.2rem;border:1px solid var(--line)}
+.bit.on{background:rgba(255,196,107,.16);border-color:rgba(255,196,107,.6);color:var(--gold);box-shadow:0 0 12px rgba(255,196,107,.25)}
+.bits .grp{display:flex;gap:inherit}
+.bits .grp+.grp{margin-left:10px}
+.pins{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.pins input{width:56px;height:68px;text-align:center;font-family:"Fraunces",serif;font-size:2rem;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:14px;color:var(--ink);outline:none}
+.pins input:focus{border-color:var(--gold)}
+.pins.shake{animation:shake .4s}
+
+/* ---------- Revelado ---------- */
+#reveal{display:none}
+body.unlocked #locked{display:none}
+body.unlocked #reveal{display:block;animation:rise .9s ease}
+.date-hero{text-align:center;margin:18px 0 6px}
+.date-hero .day{font-family:"Fraunces",serif;font-size:clamp(7rem,32vw,13rem);line-height:.85;font-weight:700;background:linear-gradient(180deg,#fff 10%,var(--gold) 60%,var(--flame));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 40px rgba(255,138,61,.35))}
+.date-hero .month{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(1.4rem,5vw,2.2rem);color:var(--ink)}
+.map-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:30px 0 10px}
+.map-cta .btn{font-size:1.05rem;padding:16px 26px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:44px}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);padding:22px;transition:transform .3s}
+.card:hover{transform:translateY(-4px) rotate(-.4deg)}
+.card .ico{font-size:2rem}
+.card h3{font-size:1.25rem;margin:10px 0 6px}
+.card p{color:var(--muted);line-height:1.5;font-size:.95rem}
+.bizum{margin-top:18px;border-radius:var(--radius);padding:24px;background:linear-gradient(135deg,rgba(111,240,196,.12),rgba(255,95,143,.1));border:1px solid var(--line);text-align:center}
+.bizum h3{font-size:1.3rem}
+.bizum p{color:var(--muted);margin-top:4px;font-size:.95rem}
+.chips{display:flex;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.chip{font-family:"Fraunces",serif;font-size:1.5rem;padding:10px 20px;border-radius:99px;border:1px solid var(--line);background:rgba(0,0,0,.2);color:var(--ink);cursor:pointer;transition:.2s}
+.chip:hover,.chip.sel{border-color:var(--mint);color:var(--mint);transform:translateY(-2px)}
+.chip-note{min-height:1.3em;margin-top:10px;color:var(--mint);font-size:.9rem}
+.sign{text-align:center;margin-top:48px;font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:1.15rem}
+.early{display:inline-block;margin:14px auto 0;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#2a1606;background:var(--mint);padding:6px 12px;border-radius:99px}
+footer{text-align:center;color:var(--dim);font-size:.8rem;margin-top:60px}
+footer button{background:none;border:none;color:var(--dim);text-decoration:underline;cursor:pointer;font:inherit}
+
+@media (max-width:520px){
+  main{padding-top:32px}
+  .count{gap:8px}
+  .cell{border-radius:16px;padding:14px 2px 10px}
+  .lbl{font-size:.6rem;letter-spacing:.14em}
+  .game{padding:22px 16px}
+  .form .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
+<body>
+<canvas id="sky"></canvas>
+<canvas id="confetti"></canvas>
 
-<body class="">
-    <div class="hero-section">
-        <div class="about-text hover-targer">About me</div>
-        <div class="contact-text hover-target">Contact</div>
-        <div class="section-center">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="title-name">Sergio Cuadros Flores</div>
-                    </div>
-                    <div class="col-12 text-center mb-2">
-                        <div class="dancing">Software Engineering</div>
-                    </div>
-                    <div class="col-12 text-center mt-4 mt-lg-5">
-                        <p>
-                            <span class="Studies hover-target"> Studies</span>
-                            <span class="Skills hover-target"> Skills</span>
-                            <span class="Experience hover-target"> Experience</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+<main>
+  <!-- ================= BLOQUEADO ================= -->
+  <section id="locked">
+    <div class="lock" id="lock"><div class="shackle"></div><div class="body"></div></div>
+    <p class="eyebrow">Cumpleaños · Cierre de año</p>
+    <h1>Algo se abre <em>muy pronto</em></h1>
+    <p class="lead">Esta página está sellada hasta que el reloj llegue a cero. Aquí dentro está todo lo que necesitas saber.</p>
+
+    <div class="count" aria-live="polite">
+      <div class="cell"><span class="num" id="d">--</span><span class="lbl">Días</span></div>
+      <div class="cell"><span class="num" id="h">--</span><span class="lbl">Horas</span></div>
+      <div class="cell"><span class="num" id="m">--</span><span class="lbl">Min</span></div>
+      <div class="cell"><span class="num" id="s">--</span><span class="lbl">Seg</span></div>
+    </div>
+    <p class="target">Se desbloquea el <b id="targetTxt">18 de noviembre a las 15:00</b></p>
+
+    <div class="game">
+      <div class="game-head">
+        <div>
+          <h2>¿No puedes esperar?</h2>
+          <p>Supera las 5 pruebas sobre el cumpleañero y lo abres ya.</p>
         </div>
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <!-- Nivel 1 -->
+      <div class="level" data-level="0">
+        <span class="tag">Prueba 1 · Astros</span>
+        <h3>El aguijón del calendario</h3>
+        <p class="riddle">Llegué al mundo un <i>18 de noviembre</i>, cuando el Sol atraviesa el octavo signo del zodiaco: uno de agua, intenso y con aguijón en la cola. <br>¿Cuál es mi signo?</p>
+        <form class="form" data-answer="escorpio|escorpion|scorpio|escorpiao">
+          <input autocomplete="off" placeholder="Tu respuesta…" aria-label="Respuesta prueba 1">
+          <button class="btn">Comprobar</button>
+        </form>
+        <div class="msg"></div>
+        <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Es un arácnido. Y no, no es la araña.</span></div>
+      </div>
+
+      <!-- Nivel 2 -->
+      <div class="level" data-level="1">
+        <span class="tag">Prueba 2 · Historia</span>
+        <h3>Una universidad con corona</h3>
+        <p class="riddle">Me hice ingeniero de software en una universidad que lleva el nombre de un rey. Pero no de cualquier rey: el que reinó en España de 1975 a 2014.<br>¿Qué <i>nombre</i> lleva ese rey?</p>
+        <form class="form" data-answer="juan carlos|juan carlos i|rey juan carlos|juancarlos|urjc">
+          <input autocomplete="off" placeholder="Nombre del rey…" aria-label="Respuesta prueba 2">
+          <button class="btn">Comprobar</button>
+        </form>
+        <div class="msg"></div>
+        <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Su hijo es Felipe VI.</span></div>
+      </div>
+
+      <!-- Nivel 3 -->
+      <div class="level" data-level="2">
+        <span class="tag">Prueba 3 · Criptografía</span>
+        <h3>Antes del código, la masa</h3>
+        <p class="riddle">Antes de programar, me tocó estirar masa y hornear pizzas. El sitio está escondido con un <i>cifrado César</i>. La clave: el día en que nací (cada letra se desplazó 18 posiciones hacia delante).</p>
+        <div class="cipher">LSYDASLWDDS</div>
+        <div class="wheel" id="wheel"></div>
+        <form class="form" data-answer="tagliatella|la tagliatella">
+          <input autocomplete="off" placeholder="Mensaje descifrado…" aria-label="Respuesta prueba 3">
+          <button class="btn">Descifrar</button>
+        </form>
+        <div class="msg"></div>
+        <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Retrocede 18 letras (o avanza 8): L → T, S → A…</span></div>
+      </div>
+
+      <!-- Nivel 4 -->
+      <div class="level" data-level="3">
+        <span class="tag">Prueba 4 · Lógica</span>
+        <h3>Sopla las velas</h3>
+        <p class="riddle">Apaga las 7 velas. El truco: al soplar una vela, también <i>cambian</i> las de su lado (las encendidas se apagan y las apagadas se encienden).</p>
+        <div class="cake" id="cake"></div>
+        <div class="row">
+          <span class="moves" id="moves">Soplidos: 0</span>
+          <button class="btn ghost" type="button" id="resetCake">Volver a encender</button>
+        </div>
+        <div class="msg"></div>
+        <div class="hint"><button type="button">¿Una pista?</button><span class="txt">Se puede en 3 soplidos. Empieza por un extremo… y piensa en grupos de tres.</span></div>
+      </div>
+
+      <!-- Nivel 5 -->
+      <div class="level" data-level="4">
+        <span class="tag">Prueba 5 · Binario</span>
+        <h3>El candado del ingeniero</h3>
+        <p class="riddle">Un ingeniero no cuenta velas, cuenta bits. Traduce estos dos números a decimal y tendrás el código del candado: <i>día</i> y <i>mes</i>.</p>
+        <div class="bits" id="bits"></div>
+        <div class="pins" id="pins">
+          <input inputmode="numeric" maxlength="1" aria-label="Dígito 1">
+          <input inputmode="numeric" maxlength="1" aria-label="Dígito 2">
+          <input inputmode="numeric" maxlength="1" aria-label="Dígito 3">
+          <input inputmode="numeric" maxlength="1" aria-label="Dígito 4">
+        </div>
+        <div class="msg" style="text-align:center"></div>
+        <div class="hint" style="text-align:center"><button type="button">¿Una pista?</button><span class="txt">De derecha a izquierda cada casilla vale 1, 2, 4, 8, 16. Suma las encendidas.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DESBLOQUEADO ================= -->
+  <section id="reveal">
+    <div class="lock open"><div class="shackle"></div><div class="body"></div></div>
+    <p class="eyebrow">Cumple de Sergio · Cierre de año</p>
+    <div style="text-align:center"><span class="early" id="earlyBadge" hidden>🧠 Desbloqueado antes de tiempo</span></div>
+    <div class="date-hero">
+      <div class="month" id="weekday">El jueves</div>
+      <div class="day">19</div>
+      <div class="month">de noviembre nos vemos en…</div>
     </div>
 
-    <div class="about-section">
-        <div class="about-close hover-target"></div>
-        <div class="section-center">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <img src="Sergio.jpg" alt="">
-                    </div>
-                    <div class="col-lg-8 text-center-mt-4">
-                        <p>
-                            TRADUCCION A INGLÉS
-
-                        </p>
-                        <div class="line"></div>
-                        <p>
-                            <br>
-                            Soy una persona abierta, dinámica, comunicativa
-                            y entusiasta, con capacidad de adaptarme a
-                            cualquier problema de manera rápida y precisa,
-                            así como resolver cualquier duda que se le pueda
-                            presentar al cliente. Me considero una persona
-                            muy curiosa, metódica, responsable y pragmática,
-                            haciendo que mi interés por conseguir grandes cosas
-                            sea infinito.
-                        </p>
-                    </div>
-                    <div class="col-12 text-center">
-                        <p><span>Sergio Cuadros Flores</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="map-cta">
+      <a class="btn" href="https://maps.app.goo.gl/K6e2pPKDNEquDxmG9?g_st=ic" target="_blank" rel="noopener">📍 Abrir ubicación</a>
+      <button class="btn ghost" type="button" id="ics">🗓️ Añadir al calendario</button>
     </div>
 
-    <div class="contact-section">
-        <div class="contact-close hover-target"></div>
-        <div class="section-center">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <a href="#" class="hover-target">sercua.flores@gmail.com</a>
-                        <p> Phone Number: +34 689 64 90 40 </p>
-                    </div>
-                    <div class="col-12 text-center social mt-4">
-                        <a href="https://github.com/scuadrosf" class="hover-target" target="_blank">GitHub</a>
-                        <a href="https://www.linkedin.com/in/sergio-cuadros-flores-0595b4213/" class="hover-target"
-                            target="_blank">LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <p class="lead" style="margin-top:22px">Celebramos mi cumpleaños y, de paso, cerramos el año todos juntos. Una última reunión para brindar por lo vivido.</p>
+
+    <div class="cards">
+      <div class="card"><div class="ico">🧥</div><h3>Ven abrigado</h3><p>Noviembre no perdona. Bufanda, chaqueta y lo que haga falta: no dudes en venir bien abrigado.</p></div>
+      <div class="card"><div class="ico">🍾</div><h3>Tu alcohol favorito</h3><p>Trae esa botella que te representa. Aquí se comparte todo, especialmente los brindis.</p></div>
+      <div class="card"><div class="ico">🎉</div><h3>Ganas de pasarlo bien</h3><p>Lo único obligatorio. Ven con energía, buen rollo y ganas de cerrar el año por todo lo alto.</p></div>
     </div>
 
-    <div class="Studies-section">
-        <div class="Studies-close hover-target"></div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <h3>Studies</h3>
-                </div>
-                <div class="col-12 mt-3 text-center">
-                    <p><span>Rey Juan Carlos University</span></p>
-                </div>
-                <div class="col-12 text-center">
-                    <p>
-                        Poner algo
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="Skills-section">
-        <div class="Skills-close hover-target"></div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <h3>Skills</h3>
-                </div>
-                <div class="col-12 mt-3 text-center">
-                    <p><span>Rey Juan Carlos University</span></p>
-                </div>
-                <div class="col-12 text-center">
-                    <p>
-                        Poner algo
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="Experience-section">
-        <div class="Experience-close hover-target"></div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <h3>Experience</h3>
-                </div>
-                <div class="box">
-                    <div class="col-12 mt-3 text-center">
-                        <p class="date">December 2021 - January 2022</p>
-                        <p><span>- Pizza Maker -</span></p>
-                        <p class="place">La Tagliatella</p>
-                    </div>
-                    <div class="col-12 text-center">
-                        <p>
-                            I was preparing diferent type of pizza in a hight restaurant called "La Tagliatella".
-                            I had must to prepare all ingredients to be fresh when diners starts to come.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-12 mt-3 text-center">
-                    <p class="date">June 2022 - September 2022</p>
-                    <p><span>- Salesperson -</span></p>
-                </div>
-                <div class="col-12 text-center">
-                    <p>
-                        I was preparing diferent type of pizza in a hight restaurant called "La Tagliatella".
-                        I had must to prepare all ingredients to be fresh when diners starts to come.
-                    </p>
-                </div>
-            </div>
-        </div>
+    <div class="bizum">
+      <h3>💸 Bizum opcional</h3>
+      <p>Si quieres aportar, elige tu nivel de cariño. Totalmente voluntario.</p>
+      <div class="chips" id="chips">
+        <button class="chip" data-n="Buen amigo 🙌">15 €</button>
+        <button class="chip" data-n="Gran amigo 🥂">20 €</button>
+        <button class="chip" data-n="Leyenda absoluta 👑">25 €</button>
+      </div>
+      <div class="chip-note" id="chipNote"></div>
     </div>
 
-    <div class='cursor' id="cursor"></div>
-    <div class='cursor2' id="cursor2"></div>
-    <div class='cursor3' id="cursor3"></div>
+    <p class="sign">Te espero. Que no falte nadie. ✨</p>
+  </section>
 
-    <a href="https://github.com/scuadrosf" class="link-to-portfolio hover-target github" target="_blank"></a>
-    <a href="https://www.linkedin.com/in/sergio-cuadros-flores-0595b4213/"
-        class="link-to-portfolio hover-target linkedin" target="_blank"></a>
+  <footer>
+    <span id="foot">Hecho con 🕯️ para el 18 de noviembre</span>
+    · <button type="button" id="relock">Volver a bloquear</button>
+  </footer>
+</main>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src="content.js"></script>
+<script>
+(() => {
+  "use strict";
+
+  /* ================= CONFIG ================= */
+  // Hora de España en noviembre = CET (UTC+01:00)
+  const UNLOCK = { month: 11, day: 18, hour: 15 };
+  const PARTY  = { month: 11, day: 19 };
+  const KEY = "cumple18-unlocked";
+
+  const pad = n => String(n).padStart(2, "0");
+  const madrid = (y, mo, d, h = 0) => new Date(`${y}-${pad(mo)}-${pad(d)}T${pad(h)}:00:00+01:00`);
+
+  // Próximo 18/11 15:00. Si ya pasó la fiesta (después del 20/11), cuenta hacia el año siguiente.
+  const now0 = new Date();
+  let year = now0.getFullYear();
+  if (now0 >= madrid(year, PARTY.month, PARTY.day + 1, 6)) year++;
+  const target = madrid(year, UNLOCK.month, UNLOCK.day, UNLOCK.hour);
+  const partyDate = madrid(year, PARTY.month, PARTY.day, 12);
+
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const store = {
+    get(k){ try { return localStorage.getItem(k); } catch { return null; } },
+    set(k,v){ try { localStorage.setItem(k,v); } catch {} },
+    del(k){ try { localStorage.removeItem(k); } catch {} }
+  };
+  if (new URLSearchParams(location.search).has("reset")) store.del(KEY);
+
+  $("#targetTxt").textContent = `18 de noviembre de ${year} a las 15:00`;
+  const wd = new Intl.DateTimeFormat("es-ES", { weekday: "long", timeZone: "Europe/Madrid" }).format(partyDate);
+  $("#weekday").textContent = `El ${wd}`;
+
+  /* ================= CIELO / NIEVE ================= */
+  const sky = $("#sky"), sc = sky.getContext("2d");
+  let W, H, flakes = [], stars = [];
+  function sizeSky(){
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    [sky, $("#confetti")].forEach(c => { c.width = W*dpr; c.height = H*dpr; c.style.width = W+"px"; c.style.height = H+"px"; c.getContext("2d").setTransform(dpr,0,0,dpr,0,0); });
+    stars = Array.from({length: Math.round(W*H/9000)}, () => ({x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.2+.2, p:Math.random()*6.28}));
+    flakes = Array.from({length: Math.round(W/18)}, () => mkFlake(true));
+  }
+  function mkFlake(any){ return {x:Math.random()*W, y:any?Math.random()*H:-10, r:Math.random()*2.2+.6, v:Math.random()*.5+.25, w:Math.random()*6.28}; }
+  function drawSky(t){
+    sc.clearRect(0,0,W,H);
+    for (const s of stars){ sc.globalAlpha = .35+.35*Math.sin(t/900+s.p); sc.fillStyle="#fff"; sc.beginPath(); sc.arc(s.x,s.y,s.r,0,7); sc.fill(); }
+    sc.globalAlpha = .7; sc.fillStyle = "#e9ecff";
+    for (const f of flakes){
+      f.y += f.v; f.x += Math.sin(t/1500+f.w)*.3;
+      if (f.y > H+10) Object.assign(f, mkFlake(false));
+      sc.beginPath(); sc.arc(f.x,f.y,f.r,0,7); sc.fill();
+    }
+    sc.globalAlpha = 1;
+    requestAnimationFrame(drawSky);
+  }
+  addEventListener("resize", sizeSky); sizeSky(); requestAnimationFrame(drawSky);
+
+  /* ================= CONFETI ================= */
+  const cf = $("#confetti").getContext("2d"); let parts = [], cfRun = false;
+  function confetti(){
+    const cols = ["#ffc46b","#ff8a3d","#ff5f8f","#6ff0c4","#ffffff","#9b8cff"];
+    for (let i=0;i<220;i++) parts.push({x:W/2+(Math.random()-.5)*W*.3, y:H*.35, vx:(Math.random()-.5)*14, vy:-Math.random()*14-4, s:Math.random()*8+4, r:Math.random()*6, vr:(Math.random()-.5)*.3, c:cols[i%cols.length], life:0});
+    if (!cfRun){ cfRun = true; requestAnimationFrame(stepCf); }
+  }
+  function stepCf(){
+    cf.clearRect(0,0,W,H);
+    parts = parts.filter(p => p.y < H+40 && p.life < 400);
+    for (const p of parts){
+      p.life++; p.vy += .28; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      cf.save(); cf.translate(p.x,p.y); cf.rotate(p.r); cf.fillStyle=p.c; cf.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); cf.restore();
+    }
+    if (parts.length) requestAnimationFrame(stepCf); else { cfRun = false; cf.clearRect(0,0,W,H); }
+  }
+
+  /* ================= DESBLOQUEO ================= */
+  function unlock(early){
+    if (document.body.classList.contains("unlocked")) return;
+    if (early) { store.set(KEY, "1"); $("#earlyBadge").hidden = false; }
+    $("#lock").classList.add("open");
+    setTimeout(() => {
+      document.body.classList.add("unlocked");
+      scrollTo({top:0, behavior:"smooth"});
+      confetti(); setTimeout(confetti, 700);
+    }, early ? 900 : 0);
+  }
+
+  /* ================= CUENTA ATRÁS ================= */
+  const els = { d:$("#d"), h:$("#h"), m:$("#m"), s:$("#s") };
+  const prev = {};
+  function tick(){
+    let diff = target - new Date();
+    if (diff <= 0) { unlock(false); return; }
+    const v = {
+      d: Math.floor(diff/864e5),
+      h: Math.floor(diff/36e5)%24,
+      m: Math.floor(diff/6e4)%60,
+      s: Math.floor(diff/1e3)%60
+    };
+    for (const k in v){
+      const txt = pad(v[k]);
+      if (prev[k] !== txt){ els[k].textContent = txt; els[k].classList.remove("tick"); void els[k].offsetWidth; els[k].classList.add("tick"); prev[k] = txt; }
+    }
+    setTimeout(tick, 1000 - (Date.now() % 1000));
+  }
+
+  /* ================= JUEGO ================= */
+  const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9 ]/g,"").replace(/\s+/g," ").trim();
+  const levels = $$(".level");
+  let cur = 0;
+  const prog = $("#progress");
+  levels.forEach((_, i) => { const d = document.createElement("div"); d.className = "dot"; d.textContent = i+1; prog.appendChild(d); });
+  function show(i){
+    cur = i;
+    levels.forEach((l, j) => l.classList.toggle("active", j === i));
+    [...prog.children].forEach((d, j) => { d.classList.toggle("done", j < i); d.classList.toggle("now", j === i); });
+  }
+  const praise = ["¡Correcto! 🔥", "¡Bien visto! 👑", "¡Descifrado! 🕵️", "¡Ni una vela! 🎂"];
+  function pass(i){
+    const msg = levels[i].querySelector(".msg");
+    msg.className = "msg ok"; msg.textContent = praise[i] || "¡Correcto!";
+    setTimeout(() => {
+      if (i+1 >= levels.length) return;
+      show(i+1);
+      const f = levels[i+1].querySelector("input");
+      if (f) f.focus({preventScroll:true});
+    }, 800);
+  }
+
+  // Preguntas de texto
+  $$(".form").forEach(form => {
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const inp = form.querySelector("input");
+      const ok = form.dataset.answer.split("|").some(a => norm(a) === norm(inp.value));
+      const lvl = +form.closest(".level").dataset.level;
+      if (ok) pass(lvl);
+      else {
+        const msg = form.parentElement.querySelector(".msg");
+        msg.className = "msg"; msg.textContent = ["Nop. Inténtalo otra vez.","Frío, frío…","Casi… o no. 😅"][Math.floor(Math.random()*3)];
+        inp.classList.remove("shake"); void inp.offsetWidth; inp.classList.add("shake");
+      }
+    });
+  });
+  $$(".hint button").forEach(b => b.addEventListener("click", () => b.parentElement.classList.add("show")));
+
+  // Rueda del César (ayuda visual)
+  const A = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  $("#wheel").innerHTML = [...A].map((c, i) => `<span title="${c}">${c}</span>`).join("");
+
+  // Velas (Lights Out en línea, 7 velas, resoluble en 3)
+  const N = 7; let lit, moves;
+  const cake = $("#cake");
+  for (let i=0;i<N;i++){
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "candle"; b.setAttribute("aria-label", `Vela ${i+1}`);
+    b.innerHTML = '<span class="fl"></span><span class="wick"></span><span class="wax"></span>';
+    b.addEventListener("click", () => blow(i));
+    cake.appendChild(b);
+  }
+  function paintCake(){ [...cake.children].forEach((c, i) => c.classList.toggle("off", !lit[i])); $("#moves").textContent = `Soplidos: ${moves}`; }
+  function resetCake(){ lit = Array(N).fill(true); moves = 0; paintCake(); levels[3].querySelector(".msg").textContent = ""; }
+  function blow(i){
+    if (cur !== 3) return;
+    [i-1, i, i+1].forEach(j => { if (j >= 0 && j < N) lit[j] = !lit[j]; });
+    moves++; paintCake();
+    if (lit.every(x => !x)) pass(3);
+  }
+  $("#resetCake").addEventListener("click", resetCake);
+  resetCake();
+
+  // Binario
+  const bits = $("#bits");
+  const toBits = n => n.toString(2).padStart(5, "0");
+  bits.innerHTML = [toBits(18), toBits(11)].map(b => '<div class="grp">' + [...b].map(x => `<div class="bit ${x==="1"?"on":""}">${x}</div>`).join("") + '</div>').join("");
+  const pins = $$("#pins input");
+  pins.forEach((p, i) => {
+    p.addEventListener("input", () => {
+      p.value = p.value.replace(/\D/g, "").slice(-1);
+      if (p.value && i < 3) pins[i+1].focus();
+      checkPins();
+    });
+    p.addEventListener("keydown", e => { if (e.key === "Backspace" && !p.value && i > 0) pins[i-1].focus(); });
+  });
+  function checkPins(){
+    const code = pins.map(p => p.value).join("");
+    if (code.length < 4) return;
+    const msg = levels[4].querySelector(".msg");
+    if (code === "1811"){ msg.className = "msg ok"; msg.textContent = "Clic. 🔓"; setTimeout(() => unlock(true), 500); }
+    else {
+      msg.className = "msg"; msg.textContent = "El candado no cede…";
+      const w = $("#pins"); w.classList.remove("shake"); void w.offsetWidth; w.classList.add("shake");
+      setTimeout(() => { pins.forEach(p => p.value = ""); pins[0].focus(); }, 500);
+    }
+  }
+
+  /* ================= EXTRA: BIZUM + CALENDARIO ================= */
+  $$(".chip").forEach(c => c.addEventListener("click", () => {
+    $$(".chip").forEach(x => x.classList.toggle("sel", x === c));
+    $("#chipNote").textContent = `Nivel desbloqueado: ${c.dataset.n}`;
+  }));
+
+  $("#ics").addEventListener("click", () => {
+    const d = `${year}${pad(PARTY.month)}${pad(PARTY.day)}`;
+    const d2 = `${year}${pad(PARTY.month)}${pad(PARTY.day+1)}`;
+    const ics = [
+      "BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//cumple//ES","BEGIN:VEVENT",
+      `UID:cumple-${d}@scuadrosf.github.io`,
+      `DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").split(".")[0]}Z`,
+      `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${d2}`,
+      "SUMMARY:🎉 Cumple de Sergio + cierre de año",
+      "LOCATION:https://maps.app.goo.gl/K6e2pPKDNEquDxmG9",
+      "DESCRIPTION:Ven abrigado\\, trae tu alcohol favorito y ganas de pasarlo bien. Bizum opcional 15-20-25 €.",
+      "END:VEVENT","END:VCALENDAR"
+    ].join("\r\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([ics], {type:"text/calendar"}));
+    a.download = "cumple-sergio.ics"; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+
+  $("#relock").addEventListener("click", () => { store.del(KEY); location.href = location.pathname; });
+
+  /* ================= INICIO ================= */
+  show(0);
+  if (new Date() >= target) unlock(false);
+  else if (store.get(KEY) === "1") { $("#earlyBadge").hidden = false; document.body.classList.add("unlocked"); }
+  else tick();
+})();
+</script>
 </body>
-
 </html>
